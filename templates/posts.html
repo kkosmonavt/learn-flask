@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block body %}
+<h1>All your Posts</h1>
+
+
+{% for post in posts %}
+<div class="blog-post">
+
+    <div class="post-header">
+        <h2 class="post-title">{{ post.title }}</h2>
+    </div>
+
+    <div class="post-content">
+        <p>{{ post.text }}</p>
+    </div>
+
+    <div class="post-footer">
+        <a href="#" class="read-more-btn">Read more</a>
+        <div class="post-stats">
+            <span class="likes">♥ 24</span>
+            <span class="comments">💬 8</span>
+        </div>
+    </div>
+
+
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sign-up
+{% endblock %}
+
+{% block body %}
+<div class="modal-container">
+    <form class="modal-form" method="POST" action="{{ url_for('sign_up') }}">
+        <div class="modal-card">
+            <!-- Закрывающий крестик в правом верхнем углу -->
+            <button class="modal-close" aria-label="Close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                            fill="#ff6b9d" />
+                        <path d="M12 13C7.58172 13 4 16.5817 4 21H20C20 16.5817 16.4183 13 12 13Z" fill="#ffc2d4" />
+                    </svg>
+                </div>
+                <h1 class="modal-title">Создайте аккаунт, чтобы начать</h1>
+            </div>
+            <form class="modal-form">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                                    stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                    stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <input type="text" name="user_name" class="form-input" placeholder="Ваше имя" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                                    stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M22 6L12 13L2 6" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <input type="email" class="form-input" name="user_email" placeholder="name@example.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 15V17M6 21H18C19.1046 21 20 20.1046 20 19V13C20 11.8954 19.1046 11 18 11H6C4.89543 11 4 11.8954 4 13V19C4 20.1046 4.89543 21 6 21Z"
+                                    stroke="#4a4a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11" stroke="#4a4a4a"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <input type="password" class="form-input" name="password" placeholder="Пароль" required>
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="submit-btn">
+                        <span>Создать аккаунт</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+
+                    <p class="login-link">
+                        Уже есть аккаунт? <a href="#" class="login-text">Войти</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+</div>
+
+</div>
+</form>
+
+
+{% endblock %}

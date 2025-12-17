@@ -1,0 +1,473 @@
+/* HEADER */
+
+
+
+.header__img {
+    height: 80px;
+    width: 80px;
+}
+
+body {
+    background-color: #fff5f8;
+}
+
+
+/* POSTS */
+
+/* Современный минималистичный стиль в розовых тонах */
+:root {
+    --graphite: #2c2c2c;
+    --graphite-light: #4a4a4a;
+    --pink-primary: #ff6b9d;
+    --pink-light: #ffc2d4;
+    --pink-pale: #fff5f8;
+    --bg-white: #ffffff;
+    --border-light: #f0f0f0;
+}
+
+.blog-post {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post:hover {
+    box-shadow: 0 10px 40px rgba(255, 107, 157, 0.1);
+    transform: translateY(-2px);
+}
+
+.blog-post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--pink-primary), var(--pink-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.blog-post:hover::before {
+    opacity: 1;
+}
+
+.post-header {
+    margin-bottom: 24px;
+}
+
+.post-title {
+    color: var(--graphite);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.post-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--graphite-light);
+}
+
+.post-date {
+    position: relative;
+    padding-left: 20px;
+}
+
+.post-date::before {
+    content: '📅';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.post-category {
+    position: relative;
+    padding-left: 20px;
+}
+
+.post-category::before {
+    content: '🏷️';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.post-content {
+    color: var(--graphite);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 32px;
+}
+
+.post-content p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+}
+
+.read-more-btn {
+    background: var(--pink-pale);
+    color: var(--pink-primary);
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.read-more-btn:hover {
+    background: var(--pink-primary);
+    color: white;
+    border-color: var(--pink-primary);
+    transform: translateY(-2px);
+}
+
+.post-stats {
+    display: flex;
+    gap: 20px;
+    color: var(--graphite-light);
+}
+
+.likes, .comments {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.likes:hover {
+    color: var(--pink-primary);
+    cursor: pointer;
+}
+
+.comments:hover {
+    color: var(--pink-primary);
+    cursor: pointer;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .blog-post {
+        padding: 24px;
+    }
+    
+    .post-footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .post-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Для списка постов на главной */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Анимация при загрузке */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.blog-post {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* MODAL WINDOW */
+
+:root {
+    --graphite: #2c2c2c;
+    --graphite-light: #4a4a4a;
+    --graphite-lighter: #7a7a7a;
+    --pink-primary: #ff6b9d;
+    --pink-light: #ffc2d4;
+    --pink-pale: #fff5f8;
+    --pink-pale-light: #fffafc;
+    --white: #ffffff;
+    --border-color: #f0e6ea;
+    --shadow-light: rgba(255, 107, 157, 0.08);
+    --shadow-medium: rgba(255, 107, 157, 0.12);
+}
+
+/* Контейнер модального окна */
+.modal-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--pink-pale) 0%, #ffffff 100%);
+    z-index: -1;
+}
+
+/* Карточка модального окна */
+.modal-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 440px;
+    width: 100%;
+    position: relative;
+    box-shadow: 
+        0 20px 60px var(--shadow-medium),
+        0 0 0 1px var(--border-color);
+    backdrop-filter: blur(10px);
+    animation: modalAppear 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Закрывающая кнопка */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--pink-pale);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--pink-light);
+    transform: rotate(90deg);
+}
+
+/* Заголовок */
+.modal-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--pink-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.modal-title {
+    color: var(--graphite);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.modal-subtitle {
+    color: var(--graphite-lighter);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* Форма */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    z-index: 1;
+    transition: stroke 0.3s ease;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    gap: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 16px;
+    color: var(--graphite);
+    background: var(--pink-pale-light);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--pink-primary);
+    background: var(--white);
+    box-shadow: 0 0 0 4px var(--shadow-light);
+}
+
+.form-input::placeholder {
+    color: var(--graphite-lighter);
+}
+
+
+/* Кнопка отправки */
+.submit-btn {
+    background: linear-gradient(135deg, var(--pink-primary) 0%, #ff8ab3 100%);
+    color: var(--white);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+
+
+/* Ссылка на вход */
+.login-link {
+    text-align: center;
+    color: var(--graphite-light);
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.login-text {
+    color: var(--pink-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-text:hover {
+    color: var(--graphite);
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .modal-card {
+        padding: 30px 24px;
+        border-radius: 20px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .modal-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .form-input {
+        padding: 14px 14px 14px 44px;
+        font-size: 15px;
+    }
+    
+    .submit-btn,
+    .social-btn {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Анимация появления полей */
+@keyframes fieldAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group:nth-child(1) { animation: fieldAppear 0.4s 0.1s both; }
+.form-group:nth-child(2) { animation: fieldAppear 0.4s 0.2s both; }
+.form-group:nth-child(3) { animation: fieldAppear 0.4s 0.3s both; }
